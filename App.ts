@@ -1,10 +1,25 @@
 
 import { ConnectDB } from "./connectDB"
-
-
 const express= require('express')
-const mariadb = require('mariadb')
+const {ApolloServer, gql} = require('apollo-server')
 
+const typeDefs = gql`
+  type Query {
+    message: String
+  }
+`;
+
+const resolvers = {
+    Query: {
+      message: () => 'Hello World!'
+    },
+  };
+
+  const server = new ApolloServer({ typeDefs, resolvers });
+
+server.listen({port:4001}).then(({ url }:any) => {
+  console.log(`Server ready at ${url}`);
+});
 
 
 const app = express()
