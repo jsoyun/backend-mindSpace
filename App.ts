@@ -3,17 +3,35 @@ import { ConnectDB } from "./connectDB"
 const express= require('express')
 const {ApolloServer, gql} = require('apollo-server')
 
+
+let test :any[] = [] 
 const typeDefs = gql`
   type Query {
     message: String
   }
+  type Mutation{
+createNCT :String
+
+
+  }
 `;
 
+//리졸버는 특정 필드의 데이터를 반환하는 함수입니다. 스키마에 정의된 타입과 형태에 따라 데이터를 반환합니다.
 const resolvers = {
     Query: {
-      message: () => 'Hello World!'
+      message: () => 'Hello World!테스트입니다-소유니가-'
     },
-  };
+     Mutation: {
+        createNCT : (arg:any)=>{
+            const yo = {name:arg}
+            test.push(yo ) 
+            return test
+
+        }
+       
+  }
+
+}
 
   const server = new ApolloServer({ typeDefs, resolvers });
 
@@ -75,8 +93,8 @@ app.post('/post',(req:any,res:any)=>{
 
 
 
-app.listen(app.get('port'),()=>{
-    console.log(app.get('port'),'에서 대기중')
-})
+// app.listen(app.get('port'),()=>{
+//     console.log(app.get('port'),'에서 대기중')
+// })
 
 
