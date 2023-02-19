@@ -1,5 +1,5 @@
 
-import { ConnectDB } from "./connectDB"
+import { ConnectDB } from "./DB/connectDB"
 const express= require('express')
 const {ApolloServer, gql} = require('apollo-server')
 

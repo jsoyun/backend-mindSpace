@@ -1,0 +1,25 @@
+datasource db {
+    provider = "mysql"
+    url      = "mysql://mark:0802@localhost:3306/mark_house"
+}
+
+//Prisma Generate는 데이터 모델을 사용하여 Prisma Client를 생성하는 도구입니다. 
+//Prisma Client를 사용하면 데이터베이스에 대한 CRUD 작업을 쉽게 수행할 수 있습니다.
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+model User {
+    id    Int     @id @default(autoincrement())
+    email String  @unique
+    name  String?
+    posts Post[]
+}
+
+model Post {
+    id       Int    @id @default(autoincrement())
+    title    String
+    author   User   @relation(fields: [authorId], references: [id])
+    authorId Int
+}

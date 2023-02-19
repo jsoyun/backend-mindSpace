@@ -6,6 +6,8 @@ export async function ConnectDB() {
          user: 'mark',
          password: '0802',
          database: 'mark_house'
+
+         
       })
     
  //  con.query(`CREATE TABLE NCT (
