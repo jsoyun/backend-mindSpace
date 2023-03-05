@@ -5,17 +5,17 @@ export async function ConnectDB() {
          host: 'localhost',
          user: 'mark',
          password: '0802',
-         database: 'mark_house'
+         database: 'markhouseTEST'
 
-         
+
       })
     
- //  con.query(`CREATE TABLE NCT (
- //         id INT AUTO_INCREMENT PRIMARY KEY,
- //         name VARCHAR(50) NOT NULL,
- //         email VARCHAR(100) NOT NULL,
- //         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
- //       )`)
+  connection.query(`CREATE TABLE CTEST (
+         id INT AUTO_INCREMENT PRIMARY KEY,
+         name VARCHAR(50) NOT NULL,
+         email VARCHAR(100) NOT NULL,
+         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+       )`)
     
      
  }
