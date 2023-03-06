@@ -69,7 +69,9 @@ ConnectDB().then(()=>{
 // })
 
 //서버가 실행될 포트를 설정
-app.set('port',process.env.PORT || 4000)
+// app.set('port',process.env.PORT || 4000)
+app.set('port',process.env.PORT || 4001)
+
 
 app.get('/',(req:any,res:any)=>{
     res.send('헬로 지성아아아')
