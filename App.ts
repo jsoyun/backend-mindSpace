@@ -1,7 +1,5 @@
 
-import { urlencoded } from "express";
-import { CLIENT_RENEG_LIMIT } from "tls";
-import { ConnectDB } from "./connectDB"
+import { ConnectDB } from "./DB/connectDB"
 const express= require('express')
 const {ApolloServer, gql} = require('apollo-server')
 const cors =require('cors')
