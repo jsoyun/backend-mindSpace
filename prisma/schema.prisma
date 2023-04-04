@@ -11,10 +11,12 @@ generator client {
 }
 
 model User {
-    id    Int     @id @default(autoincrement())
-    email String  @unique
-    name  String?
-    posts Post[]
+    id       Int    @id @default(autoincrement())
+    name     String
+    email    String @unique
+    password String
+    goals    Goal[]
+    posts    Post[]
 }
 
 model Post {
@@ -28,4 +30,58 @@ model Album {
     id     Int    @id @default(autoincrement())
     title  String
     singer String
+}
+
+model Goal {
+    id           Int           @id @default(autoincrement())
+    title        String
+    description  String
+    user         User          @relation(fields: [userId], references: [id])
+    userId       Int
+    dailyGoals   DailyGoal[]
+    weeklyGoals  WeeklyGoal[]
+    monthlyGoals MonthlyGoal[]
+    yearlyGoals  YearlyGoal[]
+}
+
+model DailyGoal {
+    id          Int      @id @default(autoincrement())
+    title       String
+    description String
+    goal        Goal     @relation(fields: [goalId], references: [id])
+    goalId      Int
+    date        DateTime
+    completed   Boolean
+}
+
+model WeeklyGoal {
+    id          Int     @id @default(autoincrement())
+    title       String
+    description String
+    goal        Goal    @relation(fields: [goalId], references: [id])
+    goalId      Int
+    weekNumber  Int
+    year        Int
+    completed   Boolean
+}
+
+model MonthlyGoal {
+    id          Int     @id @default(autoincrement())
+    title       String
+    description String
+    goal        Goal    @relation(fields: [goalId], references: [id])
+    goalId      Int
+    monthNumber Int
+    year        Int
+    completed   Boolean
+}
+
+model YearlyGoal {
+    id          Int     @id @default(autoincrement())
+    title       String
+    description String
+    goal        Goal    @relation(fields: [goalId], references: [id])
+    goalId      Int
+    yearNumber  Int
+    completed   Boolean
 }
