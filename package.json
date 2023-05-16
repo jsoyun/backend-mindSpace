@@ -1,5 +1,6 @@
 {
-  "dependencies": {
-    "@paljs/cli": "^5.3.0"
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^5.0.4"
   }
 }
